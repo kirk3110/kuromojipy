@@ -25,13 +25,20 @@ kuromoji jarfile
 
 1) Get kuromoji package from `download page <https://github.com/atilika/kuromoji/downloads>`_.
 
-2) Unzip and put kuromoji jarfile anywhere. (When you use kuromojipy, use jarfile path as param.)
+2) Unzip and put kuromoji jarfile anywhere. (When you use kuromojipy, use the path of jarfile as param.)
 
 .. code-block:: bash
 
     $ cd yourworkspace
     $ wget https://github.com/downloads/atilika/kuromoji/kuromoji-0.7.7.tar.gz
     $ tar zxvf kuromoji-0.7.7.tar.gz
+
+
+Requirement
+-----------
+- Java 6.0+
+- Python 2.7+/3.4+
+- `Py4J <https://github.com/bartdag/py4j>`_
 
 
 Examples
