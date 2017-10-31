@@ -56,7 +56,7 @@ def main():
     print('''
 When you execute the following code...
 
-from kuromoji_server import KuromojiServer
+from kuromojipy.kuromoji_server import KuromojiServer
 
 with KuromojiServer() as kuro_server:
     kuromoji = kuro_server.kuromoji
@@ -67,7 +67,7 @@ with KuromojiServer() as kuro_server:
 
 you will get the following output.
 ''')
-    from kuromoji_server import KuromojiServer
+    from kuromojipy.kuromoji_server import KuromojiServer
 
     with KuromojiServer() as kuro_server:
         kuromoji = kuro_server.kuromoji
