@@ -55,5 +55,11 @@ you will get the following output.
     たい    助動詞,*,*,*,特殊・タイ,基本形,たい,タイ,タイ
     。      記号,句点,*,*,*,*,。,。,。
 
+References
+-----------
 
-    
+Thanks!
+
+- https://qiita.com/mojaie/items/f16b97b1388f73e56b86
+- https://qiita.com/arc279/items/5f547de8978a790e8523
+- https://qiita.com/riverwell/items/e90cbbfdac439e6e9d30
