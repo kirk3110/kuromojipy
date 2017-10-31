@@ -86,8 +86,8 @@ from kuromojipy.kuromoji_server import KuromojiServer
 with KuromojiServer(kuromoji_jar='lib/kuromoji-0.7.7.jar') as kuro_server:
     kuromoji = kuro_server.kuromoji
     tokenizer = kuromoji.Tokenizer.builder().build()
-    a = tokenizer.tokenize(u'お寿司が食べたい。')
-    for token in a:
+    tokens = tokenizer.tokenize(u'お寿司が食べたい。')
+    for token in tokens:
         print(token.getSurfaceForm() + \'\\t\' + token.getAllFeatures())
 
 you will get the following output.
@@ -97,8 +97,8 @@ you will get the following output.
     with KuromojiServer(kuromoji_jar='lib/kuromoji-0.7.7.jar') as kuro_server:
         kuromoji = kuro_server.kuromoji
         tokenizer = kuromoji.Tokenizer.builder().build()
-        a = tokenizer.tokenize(u'お寿司が食べたい。')
-        for token in a:
+        tokens = tokenizer.tokenize(u'お寿司が食べたい。')
+        for token in tokens:
             print(token.getSurfaceForm() + '\t' + token.getAllFeatures())
 
 
