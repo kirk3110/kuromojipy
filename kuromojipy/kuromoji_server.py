@@ -19,11 +19,9 @@ class KuromojiServer:
         '''
         Open Java gateway and Get kuromoji Class
         '''
-        TARGET_DIR = os.path.join(__file__, '../../kuromojipy-java/target')
-        LIB_DIR = os.path.join(__file__, '../../kuromojipy-java/lib')
         # Execute .class with classpath to jar files
-        cmd = 'cd {} && java -cp {}/*;. Py4JEntryPoint'.format(
-            TARGET_DIR, LIB_DIR)
+        cmd = 'cd {} && java -cp lib/*;. Py4JEntryPoint'.format(
+            os.path.abspath(os.path.join(__file__, '..')))
         self.__proc = subprocess.Popen(cmd, shell=True)
 
         count = 0
