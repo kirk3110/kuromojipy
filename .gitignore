@@ -1,5 +1,3 @@
-/kuromojipy/lib/kuromoji-*.jar
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

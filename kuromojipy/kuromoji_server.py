@@ -17,14 +17,26 @@ class KuromojiServer:
     '''
     Wrapper for JVM Server provided by Py4J
     '''
-    def __init__(self, kuromoji_jar=None):
+    def __init__(self,
+                 kuromoji_jar=os.path.join(here, 'lib/kuromoji-0.7.7.jar')):
         '''
+        Constructor
         Open Java gateway and Get kuromoji Class
+
+        @param kuromoji_jar: Kuromoji jarfile path \
+(if default, lib/kuromoji-0.7.7.jar is used.)
         '''
-        if not kuromoji_jar:
-            kuromoji_jar = self.__find_kuromoji_jar()
         py4j_jar = os.path.abspath(os.path.join(here, 'lib/py4j0.10.6.jar'))
-        # Execute .class with classpath to jar files
+
+        # Check existance of jarfiles
+        if not os.path.isfile(kuromoji_jar):
+            raise IOError('Kuromoji jarfile ({}) is not found.'
+                          .format(kuromoji_jar))
+        elif not os.path.isfile(py4j_jar):
+            raise IOError('Py4J jarfile is not found.'
+                          .format(kuromoji_jar))
+
+        # Execute .class with classpath to jarfiles
         cmd = 'cd {} && java -cp {};{};. Py4JEntryPoint'.format(
             here, kuromoji_jar, py4j_jar)
         self.__proc = subprocess.Popen(cmd, shell=True)
@@ -56,34 +68,14 @@ class KuromojiServer:
     def __exit__(self, type, value, traceback):
         self.close()
 
-    def __find_kuromoji_jar(self):
-        '''
-        Find kuromoji jar file path in library directory
-        '''
-        # Find jar by regex matching from files in lib dir
-        all_paths = glob(os.path.join(here, 'lib/*'))
-        re_kuromoji_jar \
-            = re.compile(u'^kuromoji-[0-9]+\.[0-9]+\.[0-9]+.*\.jar$', re.U)
-        kuromoji_jar_paths \
-            = [path for path in all_paths
-               if re_kuromoji_jar.match(os.path.basename(path))]
-
-        # Sort by descending order -> Find the newest jar file
-        if kuromoji_jar_paths:
-            kuromoji_jar = sorted(kuromoji_jar_paths, reverse=True)[0]
-        else:
-            raise OSError('Kuromoji jar file is not found.')
-
-        return os.path.abspath(kuromoji_jar)
-
 
 def main():
-    print('''
+    print(u'''
 When you execute the following code...
 
 from kuromojipy.kuromoji_server import KuromojiServer
 
-with KuromojiServer(kuromoji_jar='lib/kuromoji-0.7.7.jar') as kuro_server:
+with KuromojiServer() as kuro_server:
     kuromoji = kuro_server.kuromoji
     tokenizer = kuromoji.Tokenizer.builder().build()
     tokens = tokenizer.tokenize(u'お寿司が食べたい。')
@@ -94,7 +86,7 @@ you will get the following output.
 ''')
     from kuromojipy.kuromoji_server import KuromojiServer
 
-    with KuromojiServer(kuromoji_jar='lib/kuromoji-0.7.7.jar') as kuro_server:
+    with KuromojiServer() as kuro_server:
         kuromoji = kuro_server.kuromoji
         tokenizer = kuromoji.Tokenizer.builder().build()
         tokens = tokenizer.tokenize(u'お寿司が食べたい。')
