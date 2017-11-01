@@ -9,7 +9,7 @@ Installation
 
 .. code-block:: bash
 
-    $ pip git+https://github.com/kirk3110/kuromojipy
+    $ pip install git+https://github.com/kirk3110/kuromojipy
 
 or
 
