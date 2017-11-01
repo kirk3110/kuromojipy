@@ -7,15 +7,18 @@ A python I/F for `kuromoji <https://github.com/downloads/atilika/kuromoji>`_ (po
 Installation
 ------------
 
-1) Clone kuromojipy project directory.
+.. code-block:: bash
 
-2) Put kuromojipy module directory (kuromojipy/kuromojipy) into $PYTHONPATH.
+    $ pip git+https://github.com/kirk3110/kuromojipy
+
+or
 
 .. code-block:: bash
 
     $ cd yourworkspace
     $ git clone https://github.com/kirk3110/kuromojipy.git
-    $ cp -r kuromojipy/kuromojipy path/to/python/env/Lib/site-packages
+    $ cd kuromojipy
+    $ python setup.py install
 
 
 Requirement
